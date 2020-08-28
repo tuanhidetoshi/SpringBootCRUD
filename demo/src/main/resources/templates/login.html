@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head data-th-include="layout/head :: head" data-th-with="title=${title}"></head>
+<body>
+	<header data-th-include="layout/header :: header">
+	</header>
+	<main class="container">
+		<h1>Login</h1>
+		<form method="POST">
+		  <div class="form-group">
+		    <label for="loginEmail">Email</label>
+		    <input type="email" class="form-control" name="email" id="loginEmail" placeholder="Email...">
+		  </div>
+		  <div class="form-group">
+		    <label for="loginPassword">Password</label>
+		    <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Password...">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</main>
+	<footer data-th-include="layout/footer :: footer"></footer>
+</body>
+</html>

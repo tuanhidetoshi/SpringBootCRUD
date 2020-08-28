@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<header data-th-fragment="header">
+		<nav class="container my-4" data-th-with="link=${#request.requestURI}">
+			<ul class="nav nav-pills nav-fill">
+				  <li class="nav-item">
+				    <a class="nav-link" data-th-classappend="${link} == '/' ? 'active' : ''" data-th-href="@{/}">Home</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-th-classappend="${link} == '/create' ? 'active' : ''" data-th-href="@{/create}">User Form</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-th-classappend="${link} == '/login' ? 'active' : ''" data-th-href="@{/login}">Login</a>
+				  </li>
+			</ul>
+		</nav>
+	</header>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head data-th-include="layout/head :: head" data-th-with="title='Homepage'"></head>
+<body>
+	<header data-th-include="layout/header :: header">
+	</header>
+	<main class="container">
+	  	<h1>List of items</h1>
+	  	<table class="table">
+	   	<thead>
+	    	<tr>
+			     <th scope="col">#</th>
+			     <th scope="col">First name</th>
+			     <th scope="col">Last name</th>
+			     <th scope="col">Email</th>
+			     <th scope="col">Password</th>
+			     <th scope="col">Action</th>
+		    </tr>
+	   </thead>
+	   <tbody>
+		    <tr data-th-each="user : ${users}">
+				 <th data-th-text="${user.id}" scope="row"></th>
+			     <td data-th-text="${user.firstName}">Ho</td>
+			     <td data-th-text="${user.lastName}">Ten</td>
+			     <td data-th-text="${user.email}">email@email.com</td>
+			     <td data-th-text="${user.password}">Mat khau</td>
+			     <td>
+			     	<ul class="d-flex list-unstyled justify-content-between">
+			     		<li><a data-th-href="@{/edit/{id}(id=${user.id})}" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
+			     		<li><a class="icon-remove" data-th-onclick="|onDelete('${user.id}')|"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+			     	</ul>
+			     </td>
+		    </tr>
+	   </tbody>
+	  </table>
+	</main>
+	<footer data-th-include="layout/footer :: footer"></footer>
+	<script>
+		function onDelete(id) {
+			let c = confirm(`Do you sure to delete account #${id}`);
+			if(c) {
+				let url = "./delete/" + id;
+				$.ajax({
+					method: "POST",
+					url: url
+				})
+				.done(function() {
+					location.reload(true);
+				})
+			}
+		}
+	</script>
+</body>
+</html>
